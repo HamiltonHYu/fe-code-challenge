@@ -9,8 +9,10 @@ export const updateSelected = spot => {
 };
 
 export const purchase = data => {
-    return {
+    const purchaseAction = {
         type: SPOT_PURCHASE,
         payload: data
     };
+
+    return purchaseAction;
 };

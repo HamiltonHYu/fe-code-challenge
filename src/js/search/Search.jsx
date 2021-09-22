@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {updateSelected} from '../spot/spot-actions';
 import SpotList from './spot-list/SpotList';
+import SpotModal from './SpotModal';
 
 const Search = ({
     selectedSpot,
     spots,
     setSpot
 }) => {
+    const closeModal = () => setSpot(null);
+
     return (
         <div className="Search">
             <SpotList
@@ -16,7 +19,14 @@ const Search = ({
                 selectedSpot={selectedSpot}
                 setSpot={setSpot}
             />
-            <div className="Search-content" />
+            <div className="Search-content">
+                {selectedSpot && (
+                    <SpotModal
+                        closeModal={closeModal}
+                        {...selectedSpot}
+                    />
+                )}
+            </div>
         </div>
     );
 };
